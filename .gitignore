@@ -1,0 +1,22 @@
+# .gitignore
+
+# Environment files
+.env
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual environment
+venv/
+ENV/
+env/
+
+# Docker
+*.log
+docker-compose.override.yml
+
+# VS Code
+.vscode/

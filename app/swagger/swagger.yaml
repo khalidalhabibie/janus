@@ -1,0 +1,65 @@
+openapi: 3.0.0
+info:
+  title: Email Scheduler API
+  description: API documentation for scheduling emails.
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000
+paths:
+  /api/events:
+    post:
+      summary: Schedule an email
+      description: Schedules an email to be sent at a specified future time. Validates the email details and schedules it for future sending.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email_subject:
+                  type: string
+                  description: The subject of the email.
+                  example: "Meeting Reminder"
+                email_content:
+                  type: string
+                  description: The content of the email.
+                  example: "Don't forget about the meeting tomorrow."
+                expected_sent_at:
+                  type: string
+                  format: date-time
+                  description: The date and time when the email should be sent, in ISO 8601 format.
+                  example: "2024-07-15T14:30:00"
+                recipients:
+                  type: string
+                  description: Comma-separated list of email addresses.
+                  example: "example1@example.com, example2@example.com"
+              required:
+                - email_subject
+                - email_content
+                - expected_sent_at
+                - recipients
+      responses:
+        '201':
+          description: Email scheduled successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "success"
+                  message:
+                    type: string
+                    example: "Email scheduled successfully"
+        '400':
+          description: Bad request due to missing fields or invalid data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid datetime format. Use ISO 8601 format."
