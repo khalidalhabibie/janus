@@ -62,8 +62,8 @@ To get started with the Email Scheduler API, follow these steps:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/email-scheduler-api.git
-cd email-scheduler-api
+git clone https://github.com/khalidalhabibie/janus.git
+cd janus
 ```
 
 ### 2. Create and Activate the Virtual Environment
